@@ -3,4 +3,6 @@
 
 !package.json
 !lib/
+!lib/*.js
+!lib/*.ts
 !README.md
