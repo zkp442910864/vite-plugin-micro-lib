@@ -7,7 +7,7 @@
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zkp442910864/vite-plugin-micro-lib"
+    "url": "git+https://github.com/zkp442910864/vite-plugin-micro-lib.git"
   },
   "scripts": {
     "dev": "vite",
