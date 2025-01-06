@@ -1,0 +1,26 @@
+{
+  "name": "@zzzz-/vite-plugin-micro-lib",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkp442910864/vite-plugin-micro-lib"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p ./tsconfig.build.json",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.5",
+    "chalk": "^5.4.1",
+    "eslint": "^9.17.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^5.4.8"
+  }
+}

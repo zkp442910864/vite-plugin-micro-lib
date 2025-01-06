@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "lib": [
+            "ESNext"
+        ],
+        "module": "ESNext",
+        "skipLibCheck": true,
+        "types": ["@types/node"],
+        "declaration": true,
+        "outDir": "./lib",
+        "declarationDir": "./lib",
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        // "allowImportingTsExtensions": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        // "noEmit": true,
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedSideEffectImports": true
+    },
+    "include": [
+        "./",
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "lib"
+    ]
+}
