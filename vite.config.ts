@@ -3,8 +3,9 @@ import {defineConfig} from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
     build: {
+        outDir: './lib',
         lib: {
-            entry: './src/index.ts',
+            entry: './src/vite.ts',
             formats: ['es'],
         },
         rollupOptions: {
