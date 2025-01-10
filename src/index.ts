@@ -46,7 +46,8 @@ export const microLib = (options: IOptions) => {
 
             const scriptList = [
                 `<script type="importmap">${JSON.stringify({ imports: importMap, })}</script>`,
-                ...Object.values(libMap).map((item) => `<script type="module" crossorigin src="${item.webAbsUrl || item.scriptUrl}"></script>`),
+                // 不需要默认加载,代码在加载时候会自动识别并加载
+                // ...Object.values(libMap).map((item) => `<script type="module" crossorigin src="${item.webAbsUrl || item.scriptUrl}"></script>`),
             ];
 
             return html.replace('</title>', `</title>\n${scriptList.join('\n')}\n`);
