@@ -15,7 +15,7 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "pnpm typedoc && vite build && tsc -p ./tsconfig.build.json && tsc-alias -p ./tsconfig.build.json",
+        "build": "vite build && tsc -p ./tsconfig.build.json && tsc-alias -p ./tsconfig.build.json && pnpm typedoc",
         "lint": "eslint ."
     },
     "devDependencies": {

@@ -16,7 +16,7 @@ npm install @zzzz-/vite-plugin-micro-lib --save-dev
 pnpm add @zzzz-/vite-plugin-micro-lib --save-dev
 ```
 
-### 使用
+## 使用
 
 在你的 `vite.config.ts` 中配置该插件：
 
@@ -49,74 +49,76 @@ export default defineConfig({
 });
 ```
 
-### 配置选项
+<!-- 这里往后用typedoc 生成并插入 -->
 
-`microLib` 接受一个配置对象，包含以下选项：
+## microLib()
 
-- `outDir` (string): 输出目录，默认为 `./micro-lib`。
-- `externalData` (Record<string, IExternalData>): 外部依赖数据，必须配置。
-- `webAbsUrl` (string): 外部依赖的绝对 URL 前缀，默认为空字符串。
-- `minify` (boolean): 是否压缩输出文件，默认为 `true`。
-- `sourcemap` (boolean): 是否生成 sourcemap，默认为 `true`。
-- `customHandleGenerateCode` (function): 自定义代码处理函数，接受 `libItem` 和 `code` 两个参数，返回处理后的代码。
+> **microLib**(`options`): `Plugin`
 
-### 类型定义
+Defined in: [index.ts:8](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.ts#L8)
 
-插件的类型定义如下：
+### Parameters
 
-```ts
-interface IExternalData {
-    /**
-     * 是否启用 Tree Shaking
-     * @default true
-     */
-    treeshake?: boolean;
-    /**
-     * 是否作为库进行打包
-     * @default false
-     */
-    lib?: boolean;
-}
+| Parameter | Type |
+| ------ | ------ |
+| `options` | [`IOptions`](README.md#ioptions) |
 
-interface ILibData extends IExternalData {
-    name: string;
-    version: string;
-    scriptUrl: string;
-    webAbsUrl: string;
-    fileName: string;
-}
+### Returns
 
-interface IOptions {
-    /**
-     * 输出目录
-     * @default './micro-lib'
-     */
-    outDir?: string;
-    /**
-     * 外部依赖数据
-     */
-    externalData: Record<string, IExternalData>;
-    /**
-     * 外部依赖的绝对 URL 前缀
-     * @default ''
-     */
-    webAbsUrl?: string;
-    /**
-     * 是否压缩输出文件
-     * @default true
-     */
-    minify?: boolean;
-    /**
-     * 是否生成 sourcemap
-     * @default true
-     */
-    sourcemap?: boolean;
-    /**
-     * 自定义代码处理函数
-     * @param libItem - 库项目信息
-     * @param code - 生成的代码
-     * @returns 处理后的代码或 Promise 对象
-     */
-    customHandleGenerateCode?: (libItem: IExternalData, code: string) => string | Promise<string>;
-}
-```
+`Plugin`
+
+***
+
+## IExternalData
+
+Defined in: [index.type.ts:2](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L2)
+
+### Extended by
+
+- [`ILibData`](README.md#ilibdata)
+
+### Properties
+
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="lib"></a> `lib?` | `boolean` | 是否作为库进行打包 **Default** `false` | [index.type.ts:12](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L12) |
+| <a id="treeshake"></a> `treeshake?` | `boolean` | 是否启用 Tree Shaking **Default** `true` | [index.type.ts:7](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L7) |
+
+***
+
+## ILibData
+
+Defined in: [index.type.ts:15](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L15)
+
+### Extends
+
+- [`IExternalData`](README.md#iexternaldata)
+
+### Properties
+
+| Property | Type | Description | Inherited from | Defined in |
+| ------ | ------ | ------ | ------ | ------ |
+| <a id="filename"></a> `fileName` | `string` | 库的文件名 | - | [index.type.ts:35](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L35) |
+| <a id="lib-1"></a> `lib?` | `boolean` | 是否作为库进行打包 **Default** `false` | [`IExternalData`](README.md#iexternaldata).[`lib`](README.md#lib) | [index.type.ts:12](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L12) |
+| <a id="name"></a> `name` | `string` | 库的名称 | - | [index.type.ts:19](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L19) |
+| <a id="scripturl"></a> `scriptUrl` | `string` | 库的脚本 URL | - | [index.type.ts:27](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L27) |
+| <a id="treeshake-1"></a> `treeshake?` | `boolean` | 是否启用 Tree Shaking **Default** `true` | [`IExternalData`](README.md#iexternaldata).[`treeshake`](README.md#treeshake) | [index.type.ts:7](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L7) |
+| <a id="version"></a> `version` | `string` | 库的版本 | - | [index.type.ts:23](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L23) |
+| <a id="webabsurl"></a> `webAbsUrl` | `string` | 库的绝对 URL | - | [index.type.ts:31](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L31) |
+
+***
+
+## IOptions
+
+Defined in: [index.type.ts:38](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L38)
+
+### Properties
+
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="customhandlegeneratecode"></a> `customHandleGenerateCode?` | (`libItem`: [`IExternalData`](README.md#iexternaldata), `code`: `string`) => `string` \| `Promise`\<`string`\> | 自定义代码处理函数 | [index.type.ts:69](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L69) |
+| <a id="externaldata"></a> `externalData` | `Record`\<`string`, [`IExternalData`](README.md#iexternaldata)\> | 外部依赖数据 | [index.type.ts:47](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L47) |
+| <a id="minify"></a> `minify?` | `boolean` | 是否压缩输出文件 **Default** `true` | [index.type.ts:57](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L57) |
+| <a id="outdir"></a> `outDir?` | `string` | 输出目录 **Default** `'./micro-lib'` | [index.type.ts:43](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L43) |
+| <a id="sourcemap"></a> `sourcemap?` | `boolean` | 是否生成 sourcemap **Default** `true` | [index.type.ts:62](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L62) |
+| <a id="webabsurl-1"></a> `webAbsUrl?` | `string` | 外部依赖的绝对 URL 前缀 **Default** `''` | [index.type.ts:52](https://github.com/zkp442910864/vite-plugin-micro-lib/blob/67cf6d6726eb18fb39fef0adccd9c5d1dc966209/src/index.type.ts#L52) |
