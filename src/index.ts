@@ -1,8 +1,9 @@
+export * from './index.type';
 import path from 'node:path';
 import { build, Plugin } from 'vite';
 import chalk from 'chalk';
-import type {IOptions} from "./index.type";
-import {generateExternalAndLibMap, libBuildPlugin} from "./utils";
+import type { IOptions } from './index.type';
+import { generateExternalAndLibMap, libBuildPlugin } from './utils';
 
 export const microLib = (options: IOptions) => {
     const {
@@ -32,6 +33,16 @@ export const microLib = (options: IOptions) => {
                 build: {
                     rollupOptions: {
                         external,
+                        /**
+                         * - 一个思路, 大概是
+                         * - 传入正则,用起始匹配
+                         * - 然后通过 node_modules/{包名}/package.json 中的 exports 找到库下的其他子包
+                         * - 来填充 external 里面没列的包
+                         * - TODO: 问题是这种是全量的, 不清楚哪些包是不存在的, 也可能出现 exports 不存在的情况
+                         *
+                         * - 目前的实现是,需要用户手动录入的方式
+                         */
+                        // external: externalReg,
                     },
                 },
             };

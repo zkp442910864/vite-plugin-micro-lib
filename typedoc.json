@@ -1,0 +1,26 @@
+{
+    "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+    // "entryPoints": ["src/index.ts"],
+    "entryPoints": ["src/index.ts"],
+    "outputFileStrategy": "modules",
+    "entryFileName": "TYPE",
+    "cleanOutputDir": false,
+    "readme": "none",
+    "hidePageTitle": true,
+    "hidePageHeader": true,
+    "out": "./",
+    // "hideGroupHeadings": true,
+    // "disableSources": true,
+    // "tableColumnSettings": {
+    //   "hideSources": true,
+    // },
+    "interfacePropertiesFormat": "table",
+    "parametersFormat": "table",
+    "enumMembersFormat": "table",
+    "typeDeclarationFormat": "table",
+    "propertiesFormat": "table",
+    "plugin": [
+      "typedoc-plugin-markdown",
+      "./config/typedoc-plugin-custom-output/index.js"
+    ]
+  }

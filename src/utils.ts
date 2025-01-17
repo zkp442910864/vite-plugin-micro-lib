@@ -1,9 +1,9 @@
 import * as fs from 'node:fs';
 import path from 'node:path';
 import { cwd } from 'node:process';
-import type {IExternalData, ILibData, IOptions} from "./index.type";
-import chalk from "chalk";
-import {Plugin} from "vite";
+import type { IExternalData, ILibData, IOptions } from './index.type';
+import chalk from 'chalk';
+import { Plugin } from 'vite';
 
 /** 生成基础数据 */
 export function generateExternalAndLibMap(externalData: Record<string, IExternalData>, outDir: string, webAbsUrl: string) {
@@ -29,7 +29,7 @@ export function generateExternalAndLibMap(externalData: Record<string, IExternal
             ...externalData[key],
         };
     });
-    return { external, libMap, outDirPath, };
+    return { external, externalReg: external.map(ii => new RegExp(`^${ii}`)), libMap, outDirPath, };
 }
 
 /** 处理非lib打包后,内容没有进行export抛出问题 */
@@ -48,6 +48,7 @@ export function libBuildPlugin(rootOutDir: string, outDir: string, libItem: ILib
                 asset.code = await customHandleGenerateCode(libItem, asset.code);
             }
             else {
+                /** 手动增加 export */
                 let originalCode = asset.code;
                 const exportName = originalCode.match(/var\s*(\w+)\s*=\s*\{\}[;|,]/)?.[1]?.trim();
                 const reg = new RegExp(`(${exportName}\\.(\\w+)\\s*=)`);
@@ -74,7 +75,7 @@ export function libBuildPlugin(rootOutDir: string, outDir: string, libItem: ILib
             console.log(
                 `✔ ${chalk.green(path.posix.join(rootOutDir, outDir, libItem.fileName))}   ${(asset.code.length / 1024).toFixed(2)} kB`
             );
-        }
+        },
 
     };
     return config;
